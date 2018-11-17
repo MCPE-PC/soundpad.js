@@ -1,0 +1,57 @@
+{
+  "name": "soundpad",
+  "version": "0.0.5",
+  "description": "A Node.js module to interact with Soundpad",
+  "keywords": [
+    "soundpad"
+  ],
+  "homepage": "https://github.com/MCPE-PC/soundpad.js#readme",
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/MCPE-PC/soundpad.js/issues",
+    "email": "maxpjh0528@naver.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "MCPE_PC",
+    "email": "maxpjh0528@naver.com",
+    "url": "https://www.mcpepc.ml"
+  },
+  "repository": "github:MCPE-PC/soundpad.js",
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test": "xo && nyc ava"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "debug": "^4.1.0",
+    "lodash": "^4.17.11",
+    "supports-color": "^5.5.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.1.6",
+    "@babel/register": "^7.0.0",
+    "ava": "1.0.0-rc.2",
+    "babel-plugin-istanbul": "^5.1.0",
+    "coveralls": "^3.0.2",
+    "nyc": "^13.1.0",
+    "xo": "^0.23.0"
+  },
+  "ava": {
+    "require": [
+      "@babel/register"
+    ]
+  },
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "xo": {
+    "rules": {
+      "no-use-extend-native/no-use-extend-native": "off"
+    }
+  }
+}
