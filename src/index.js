@@ -1,9 +1,9 @@
 import * as net from 'net';
 import * as Promise from 'bluebird';
-import * as debug from 'debug';
 import * as _ from 'lodash';
 
-const log = debug(__filename);
+const log = require('debug')(__filename);
+
 const tracker = log.extend('trace');
 tracker.log = (data, ...args) => {
 	console.error('Function' + data + ' was called', ...args);
@@ -34,7 +34,7 @@ class Soundpad {
 	}
 
 	/**
-	 * Connects to Soundpad
+	 * Connects to Soundpad.
 	 * @returns {Promise} Resolves the Soundpad instance when connected Soundpad successfully.
 	 */
 	connect() {
@@ -60,7 +60,7 @@ class Soundpad {
 	}
 
 	/**
-	 * Disconnects Soundpad
+	 * Disconnects Soundpad.
 	 * @returns {Promise} Resolves the Soundpad instance when disconnected Soundpad successfully.
 	 */
 	disconnect() {
@@ -75,6 +75,10 @@ class Soundpad {
 		});
 	}
 
+	/**
+	 * Poll Soundpad.
+	 * @returns {Promise} Resolves the Soundpad instance when Soundpad respond.
+	 */
 	poll() {
 		return new Promise((resolve, reject) => {
 			this.send('IsAlive()').then(() => {
