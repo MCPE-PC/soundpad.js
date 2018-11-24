@@ -16,8 +16,6 @@ class Soundpad {
 	 * @param {number} pollingInterval - Interval of polling Soundpad.
 	 */
 	constructor(connectionSettings, pollingInterval = 1000) {
-		tracker(arguments.callee.name); // eslint-disable-line no-caller
-
 		this.pipe = false;
 		this.writing = false;
 
@@ -29,8 +27,9 @@ class Soundpad {
 		this.autoReconnect = connectionSettings.autoReconnect;
 		this.connectionTimeout = connectionSettings.timeout;
 		this.reconnectInterval = connectionSettings.reconnectInterval;
+		this.timeout = connectionSettings.timeout;
 
-		setInterval(this.poll, pollingInterval);
+		this.pollingInterval = pollingInterval;
 	}
 
 	/**
@@ -42,12 +41,13 @@ class Soundpad {
 			const socket = new net.Socket();
 			socket.setTimeout(this.timeout);
 			socket.connect({
-				path: '\\\\.\\sp_remote_control\\'
+				path: '\\\\.\\pipe\\sp_remote_control'
 			}, () => {
 				this.pipe = socket;
+				setInterval(this.poll, this.pollingInterval);
 				resolve(this);
 			});
-			if (!this.pipe) {
+			socket.on('error', () => {
 				if (this.autoReconnect) {
 					Promise.delay(this.reconnectInterval).then(() => {
 						this.connect();
@@ -55,7 +55,7 @@ class Soundpad {
 				} else {
 					reject(new Error('Soundpad could not be connected.'));
 				}
-			}
+			});
 		});
 	}
 
