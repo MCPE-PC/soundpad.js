@@ -1,7 +1,7 @@
 import * as net from 'net';
-import * as Promise from 'bluebird';
 import * as _ from 'lodash';
 
+const Promise = require('bluebird');
 const log = require('debug')(__filename);
 
 const tracker = log.extend('trace');
@@ -90,6 +90,13 @@ class Soundpad {
 		});
 	}
 
+	/**
+	 * Send `data` to Soundpad.
+	 * @param {string|Buffer|Uint8Array} data - Data which will be sent.
+		* @param {boolean} hasResponse - Wait until response?
+	 * @returns {Promise} Resolves response if `hasResponse` is `true`,
+		* or resolves the Soundpad instance when the data is sent.
+	 */
 	send(data, hasResponse = false) {
 		return new Promise((resolve, reject) => {
 			if (this.writing) {
@@ -123,7 +130,7 @@ class Soundpad {
 	}
 }
 
-export default function soundpad(...args) {
+module.exports = (...args) => {
 	return new Promise((resolve, reject) => {
 		try {
 			resolve(new Soundpad(...args));
@@ -131,4 +138,4 @@ export default function soundpad(...args) {
 			reject(error);
 		}
 	});
-}
+};

@@ -1,6 +1,6 @@
 {
   "name": "soundpad",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Node.js module to interact with Soundpad",
   "keywords": [
     "soundpad"
@@ -19,26 +19,35 @@
   },
   "repository": "github:MCPE-PC/soundpad.js",
   "scripts": {
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "xo && nyc ava"
+    "coverage": "nyc report --reporter=text-lcov > nyc.info && grunt coveralls",
+    "test": "grunt test"
   },
   "dependencies": {
-    "bluebird": "^3.5.3",
-    "debug": "^4.1.0",
-    "lodash": "^4.17.11",
-    "supports-color": "^5.5.0"
+    "bluebird": "~3.5.3",
+    "debug": "~4.1.0",
+    "load-grunt-tasks": "~4.0.0",
+    "lodash": "~4.17.11",
+    "supports-color": "~5.5.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.1.6",
-    "@babel/register": "^7.0.0",
+    "@babel/core": "~7.1.6",
+    "@babel/preset-env": "~7.1.6",
+    "@babel/register": "~7.0.0",
     "ava": "1.0.0-rc.2",
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "babel-plugin-istanbul": "^5.1.0",
-    "coveralls": "^3.0.2",
-    "nyc": "^13.1.0",
-    "xo": "^0.23.0"
+    "babel-plugin-istanbul": "~5.1.0",
+    "grunt": "~1.0.3",
+    "grunt-ava": "^0.19.0",
+    "grunt-babel": "~8.0.0",
+    "grunt-coveralls": "~2.0.0",
+    "grunt-jsdoc": "~2.3.0",
+    "grunt-xo": "~0.20.0",
+    "ink-docstrap": "~1.3.2",
+    "nyc": "~13.1.0",
+    "xo": "~0.23.0"
   },
+  "os": [
+    "win32"
+  ],
   "ava": {
     "require": [
       "@babel/register"
