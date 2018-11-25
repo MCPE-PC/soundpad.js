@@ -1,0 +1,28 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "protocol": "html://",
+    "methodHeadingReturns": false,
+    "systemName": "soundpad.js",
+    "logoFile": "",
+    "footer": "Hosted on [GitHub Pages](https://pages.github.com/)",
+    "copyright": "© 2018 MCPE_PC and contributors of [soundpad.js](https://github.com/MCPE-PC/soundpad.js)",
+    "navType": "vertical",
+    "theme": "cosmo",
+    "linenums": true,
+    "collapseSymbols": false,
+    "inverseNav": true,
+    "outputSourceFiles": true,
+    "outputSourcePath": true,
+    "dateFormat": "MMM Do, YYYY"
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  }
+}
