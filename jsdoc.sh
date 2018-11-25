@@ -4,7 +4,7 @@ if [[ "$TRAVIS_BRANCH" == 'master' ]] && [[ "$TRAVIS_PULL_REQUEST" == 'false' ]]
 	git config --global user.email 'maxpjh0528@naver.com'
 
 	grunt jsdoc &&\
-	curl -H "Authorization: token $GITHUB_TOKEN" https://github.com &&\
+	curl -H "Authorization: token $GITHUB_TOKEN" https://github.com/MCPE-PC/soundpad.js.git > /dev/null &&\
 	git add docs &&\
 	git commit -m "Travis JSDoc automation: build $TRAVIS_BUILD_ID" &&\
 	git push -u origin master &&\
