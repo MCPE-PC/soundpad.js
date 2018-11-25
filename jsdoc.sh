@@ -3,6 +3,7 @@ if [[ "$TRAVIS_BRANCH" == 'master' ]] && [[ "$TRAVIS_PULL_REQUEST" == 'false' ]]
 	git config --global user.name 'MCPE_PC'
 	git config --global user.email 'maxpjh0528@naver.com'
 
+	grunt jsdoc &&\
 	git remote add github "https://$GITHUB_TOKEN@github.com/MCPE-PC/soundpad.js.git" &&\
 	git add docs &&\
 	git commit -m "" &&\
