@@ -6,7 +6,7 @@ if [[ "$TRAVIS_BRANCH" == 'master' ]] && [[ "$TRAVIS_PULL_REQUEST" == 'false' ]]
 	grunt jsdoc &&\
 	git remote add github "https://$GITHUB_TOKEN@github.com/MCPE-PC/soundpad.js.git" &&\
 	git add docs &&\
-	git commit -m "" &&\
+	git commit -m "Travis JSDoc automation: build $TRAVIS_BUILD_ID" &&\
 	git push -u github master &&\
 	exit 0
 fi
