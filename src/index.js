@@ -6,7 +6,7 @@ const log = require('debug')(__filename);
 
 const tracker = log.extend('trace');
 tracker.log = (data, ...args) => {
-	console.error('Function' + data + ' was called', ...args);
+	console.error('Function %s was called', data, ...args);
 };
 
 class Soundpad {
@@ -16,6 +16,9 @@ class Soundpad {
 	 * @param {number} pollingInterval - Interval of polling Soundpad.
 	 */
 	constructor(connectionSettings, pollingInterval = 1000) {
+		tracker('constructor');
+
+		this.connected = false;
 		this.pipe = false;
 		this.writing = false;
 
@@ -37,13 +40,17 @@ class Soundpad {
 	 * @returns {Promise} Resolves the Soundpad instance when connected Soundpad successfully.
 	 */
 	connect() {
+		tracker('connect');
+
 		return new Promise((resolve, reject) => {
 			const socket = new net.Socket();
 			socket.setTimeout(this.timeout);
 			socket.connect({
 				path: '\\\\.\\pipe\\sp_remote_control'
 			}, () => {
+				socket.removeAllListeners();
 				this.pipe = socket;
+				this.connected = true;
 				setInterval(this.poll, this.pollingInterval);
 				resolve(this);
 			});
@@ -53,7 +60,7 @@ class Soundpad {
 						this.connect();
 					});
 				} else {
-					reject(new Error('Soundpad could not be connected.'));
+					reject(new Error('Soundpad could not be connected.this.pipe'));
 				}
 			});
 		});
@@ -64,8 +71,10 @@ class Soundpad {
 	 * @returns {Promise} Resolves the Soundpad instance when disconnected Soundpad successfully.
 	 */
 	disconnect() {
+		tracker('disconnect');
+
 		return new Promise((resolve, reject) => {
-			if (this.pipe instanceof net.Socket) {
+			if (this.connected) {
 				this.pipe.end();
 				this.pipe = false;
 				resolve(this);
@@ -80,12 +89,13 @@ class Soundpad {
 	 * @returns {Promise} Resolves the Soundpad instance when Soundpad respond.
 	 */
 	poll() {
+		tracker('poll');
+
 		return new Promise((resolve, reject) => {
 			this.send('IsAlive()').then(() => {
 				resolve(this);
 			}, error => {
 				reject(error);
-				console.error('Poll is not sent to Soundpad!');
 			});
 		});
 	}
@@ -98,13 +108,15 @@ class Soundpad {
 		* or resolves the Soundpad instance when the data is sent.
 	 */
 	send(data, hasResponse = false) {
+		tracker('send');
+
 		return new Promise((resolve, reject) => {
 			if (this.writing) {
 				reject(new Error('Cannot send data while other data is being sent.'));
 			}
-			this.writing = true;
-			if (this.pipe instanceof net.Socket) {
-				if (typeof data === String) {
+			if (this.connected) {
+				this.writing = true;
+				if (typeof data === 'string') {
 					data = Buffer.from(data);
 				}
 				if (hasResponse) {
@@ -119,10 +131,10 @@ class Soundpad {
 					if (!hasResponse) {
 						resolve(this);
 					}
-					if (this.writing) {
-						reject(new Error('Could not be sent to Soundpad.'));
-					}
 				});
+				if (this.writing) {
+					reject(new Error('Could not be sent to Soundpad.'));
+				}
 			} else {
 				reject(new Error('Soundpad is not connected or not a socket.'));
 			}

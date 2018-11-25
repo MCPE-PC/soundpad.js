@@ -5,3 +5,4 @@ if (process.platform !== 'win32') {
 }
 
 module.exports = require('./src');
+module.exports.Caller = require('./src/caller');

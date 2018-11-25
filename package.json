@@ -1,11 +1,11 @@
 {
   "name": "soundpad",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A Node.js module to interact with Soundpad",
   "keywords": [
     "soundpad"
   ],
-  "homepage": "https://github.com/MCPE-PC/soundpad.js#readme",
+  "homepage": "https://soundpad.js.org/",
   "main": "index.js",
   "bugs": {
     "url": "https://github.com/MCPE-PC/soundpad.js/issues",
@@ -17,7 +17,7 @@
     "email": "maxpjh0528@naver.com",
     "url": "https://www.mcpepc.ml"
   },
-  "repository": "github:MCPE-PC/soundpad.js",
+  "repository": "MCPE-PC/soundpad.js",
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov || coveralls",
     "test": "xo && nyc ava"
