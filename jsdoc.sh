@@ -6,9 +6,13 @@ if [[ "$TRAVIS_BRANCH" == 'master' ]] && [[ "$TRAVIS_PULL_REQUEST" == 'false' ]]
 	echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" >> ~/.git-credentials
 
 	grunt jsdoc &&\
-	cd docs &&\
+	mkdir gh-pages &&\
+	cd gh-pages &&\
 	mv ../.git ./ &&\
 	git checkout -b gh-pages &&\
+	git pull &&\
+	cd docs &&\
+	mv ../gh-pages/.git ./ &&\
 	git add . &&\
 	git commit -m "Travis JSDoc automation: build #$TRAVIS_BUILD_NUMBER" > /dev/null &&\
 	git push -u origin gh-pages &&\
