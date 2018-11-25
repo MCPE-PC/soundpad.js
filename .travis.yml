@@ -10,4 +10,4 @@ env:
 
 before_script:
   - npm install grunt-cli -g
-script: ./jsdoc.sh
+script: chmod +x ./jsdoc.sh; ./jsdoc.sh
