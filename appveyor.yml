@@ -15,9 +15,9 @@ install:
 test_script:
   - node --version
   - npm --version
-  - grunt test
+  - npm test
 
 after_test:
-  - npm run coverage
+  - ps: If ($env:nodejs_version -eq 10) {npm run coverage}
 
 build: off

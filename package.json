@@ -19,8 +19,8 @@
   },
   "repository": "github:MCPE-PC/soundpad.js",
   "scripts": {
-    "coverage": "nyc report --reporter=text-lcov > nyc.info && grunt coveralls",
-    "test": "grunt test"
+    "coverage": "nyc report --reporter=text-lcov || coveralls",
+    "test": "xo && nyc ava"
   },
   "dependencies": {
     "bluebird": "~3.5.3",
