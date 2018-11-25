@@ -9,9 +9,9 @@ if [[ "$TRAVIS_BRANCH" == 'master' ]] && [[ "$TRAVIS_PULL_REQUEST" == 'false' ]]
 	mkdir gh-pages &&\
 	cd gh-pages &&\
 	mv ../.git ./ &&\
-	git checkout -b gh-pages &&\
+	git checkout -b gh-pages > /dev/null &&\
 	git pull &&\
-	cd docs &&\
+	cd ../docs &&\
 	mv ../gh-pages/.git ./ &&\
 	git add . &&\
 	git commit -m "Travis JSDoc automation: build #$TRAVIS_BUILD_NUMBER" > /dev/null &&\
