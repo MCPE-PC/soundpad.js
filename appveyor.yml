@@ -3,6 +3,10 @@ environment:
     - nodejs_version: '10'
     - nodejs_version: '4'
 
+  COVERALLS_SERVICE_NAME: appveyor
+  COVERALLS_REPO_TOKEN:
+    secure: AzEW4hOZq5g/mcqSqPjuWpYRhw7i5NuPtaAg5ZjQOj8nmC0gFpT6ZolUZFy5uI/g
+
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install grunt-cli -g
@@ -12,3 +16,8 @@ test_script:
   - node --version
   - npm --version
   - grunt test
+
+after_test:
+  - grunt coveralls
+
+build: off

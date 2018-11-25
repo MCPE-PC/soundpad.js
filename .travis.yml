@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 10
+
+env:
+  - secure: "qD3ERifOPWmU4vRSNPh3LzBk1b/VMYz43Kb9lFyX5gHcWa5xxg2IQNxkNmKbzAZ1QzjX0rOiMiy8093aeg9Y8pMSnxQGgYiHC9cbZEZctJcp7vVQgaIwHay3V27xeZuWHvmEbVW0t/Ov3tDRA6r2QC46ytQFJBQlDDvLn71SHMLGX7qCP5fjpg/N7U+RVbmZyIUh5enc++qvbdzMp8fzsSzdMW+wsyt/1ZiZoPTkQ/8+c3hC8E+17aEjiUhxHaZgErlWxX6nEZtd/K0tifGAxOmSEYL6EqVbplPn1AgTYsUzZAO2uNgCwHVLLbxtDL70Gf8KMzmC8d6SKFbFHETbG3oAxubFbp8HyMh2hvHKda4Q2TqS+4PFvwBQYXVYfN4jS5bolkJHIP6CLSIP2JsBu/PAp61I6t76FNOQq0WsAZ1xLDh/TETYShDBuJ4Yx0yk5sgay0a8VzQ29d+1vgt7hJBc1Ew2K5c+ZkJfaDEQfrU8/Ws5DYJSHN32VjNoymZob/g4G6FzUBc1DYd18zMvyezU63qQbz3FOD1LQ8uaP3YvA8ZauphDmFztIdu4lSEMLB70g67plWtjOIT9+3FaTLeipxOOjCMsVhjkkYmppjIVp7V+yiM5ZeGk7gIehCdnbgHSB+yfT07cyX1wkUGbZsnfvIUCIzSgBEyYwqb+vBk="
+
+before_script:
+  - npm install grunt-cli -g
+script: ./jsdoc.sh

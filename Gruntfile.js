@@ -17,7 +17,7 @@ module.exports = grunt => {
 		jsdoc: {
 			src: ['README.md', 'src/**.js'],
 			options: {
-				destination: 'doc',
+				destination: 'docs',
 				template: 'node_modules/ink-docstrap/template',
 				configure: 'node_modules/ink-docstrap/template/jsdoc.conf.json'
 			}
@@ -28,6 +28,6 @@ module.exports = grunt => {
 	});
 
 	grunt.registerTask('default', ['xo', 'ava', 'coveralls', 'babel', 'jsdoc']);
-	grunt.registerTask('build', ['jsdoc']);
+	grunt.registerTask('build', ['babel', 'jsdoc']);
 	grunt.registerTask('test', ['xo', 'ava']);
 };
