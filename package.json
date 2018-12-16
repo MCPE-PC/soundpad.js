@@ -36,7 +36,7 @@
     "ava": "1.0.1",
     "babel-plugin-istanbul": "~5.1.0",
     "grunt": "~1.0.3",
-    "grunt-ava": "^0.19.0",
+    "grunt-ava": "~0.19.0",
     "grunt-babel": "~8.0.0",
     "grunt-coveralls": "~2.0.0",
     "grunt-jsdoc": "~2.3.0",

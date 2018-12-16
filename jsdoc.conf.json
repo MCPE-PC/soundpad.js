@@ -22,7 +22,6 @@
     "dateFormat": "MMM Do, YYYY"
   },
   "markdown": {
-    "parser": "gfm",
-    "hardwrap": true
+    "idInHeadings": true
   }
 }
