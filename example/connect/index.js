@@ -1,6 +1,8 @@
-require('../../')().then(soundpad => { // eslint-disable-line unicorn/import-index
-	console.log('Connecting to Soundpad...');
-	soundpad.connect().then(() => {
-		console.log('Connected to Soundpad.');
-	});
+const Soundpad = require('../..');
+
+const soundpad = new Soundpad();
+console.log('Connecting to Soundpad...');
+soundpad.connect().then(() => {
+	console.log('Connected to Soundpad');
+	soundpad.disconnect();
 });

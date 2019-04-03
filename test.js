@@ -1,6 +1,12 @@
+import net from 'net';
 import test from 'ava';
+import Soundpad from '.'; // Also performs platform checking
 
-// Checking platform
-test('Checking if the test is running on Windows', t => {
-	t.is(process.platform, 'win32', 'The test should be proceeded on Windows.');
+// Bind named pipe server
+const server = net.createServer();
+server.listen(Soundpad.pipeName, () => {
+	const soundpad = new Soundpad({autoReconnect: false});
+	test('Connect pipe', async t => {
+		await t.notThrowsAsync(soundpad.connect());
+	});
 });
