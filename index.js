@@ -1,6 +1,6 @@
 require('@babel/register');
 
-if (process.platform !== 'win32') {
+if (process.platform !== 'win32' && !process.env.FORCE) {
 	throw new Error('This module only works on Windows');
 }
 
