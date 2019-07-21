@@ -34,7 +34,7 @@
     "@babel/preset-env": "~7.4.3",
     "@babel/register": "~7.4.0",
     "ava": "~1.4.1",
-    "babel-plugin-istanbul": "~5.1.1",
+    "babel-plugin-istanbul": "~5.2.0",
     "grunt": "~1.0.4",
     "grunt-ava": "~0.19.0",
     "grunt-babel": "~8.0.0",
