@@ -25,7 +25,7 @@
   "dependencies": {
     "bluebird": "~3.5.4",
     "debug": "~4.1.1",
-    "load-grunt-tasks": "~4.0.0",
+    "load-grunt-tasks": "~5.1.0",
     "lodash": "~4.17.11"
   },
   "devDependencies": {
